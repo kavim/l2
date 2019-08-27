@@ -2,6 +2,8 @@
 header.masthead {
   text-align: center;
   color: white;
+  width: 100%;
+  height: 100vh;
   .intro-text {
     padding-top: 150px;
     padding-bottom: 100px;
@@ -23,7 +25,7 @@ header.masthead {
 }
 @media(min-width:768px) {
   header.masthead {
-    .intro-text {
+      .intro-text {
       padding-top: 100px;
       padding-bottom: 200px;
       .intro-lead-in {
@@ -47,13 +49,24 @@ header.masthead {
 .panel {
   position: absolute;
   z-index: 10;
-  width: 200px;
-  top: 50%;
-  left: 50%;
-  margin: -110px 0 0 -100px;
+  width: 100%;
+  margin: 0 auto;
   padding: 20px;
   z-index: 100;
+  top:30%;
 }
+
+@media(min-width:768px) {
+  .panel {
+    position: absolute;
+    z-index: 10;
+    margin: 0 auto;
+    z-index: 100;
+    top:25%;
+    text-align: center;
+  }
+}
+
 
 /* ---- particles.js container ---- */
 
@@ -64,6 +77,16 @@ header.masthead {
 	background-size: 400% 400%;
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;  
+}
+
+@media(min-width:768px) {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, rgb(82, 131, 238), rgb(38, 107, 139), #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
   animation: Gradient 15s ease infinite;  
 }
 

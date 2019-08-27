@@ -176,6 +176,8 @@ img::-moz-selection {
 header.masthead {
   text-align: center;
   color: white;
+  width: 100%;
+  height: 100vh;
 }
 
 header.masthead .intro-text {
@@ -223,16 +225,35 @@ header.masthead .intro-text .intro-heading {
 .panel {
   position: absolute;
   z-index: 10;
-  width: 200px;
-  top: 50%;
-  left: 50%;
-  margin: -110px 0 0 -100px;
+  width: 100%;
+  margin: 0 auto;
   padding: 20px;
   z-index: 100;
+  top: 30%;
+}
+
+@media (min-width: 768px) {
+  .panel {
+    position: absolute;
+    z-index: 10;
+    margin: 0 auto;
+    z-index: 100;
+    top: 25%;
+    text-align: center;
+  }
 }
 
 /* ---- particles.js container ---- */
 #particles-js {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #5283ee, #266b8b, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+}
+
+@media (min-width: 768px) {
   width: 100%;
   height: 100%;
   background: linear-gradient(-45deg, #5283ee, #266b8b, #23A6D5, #23D5AB);
