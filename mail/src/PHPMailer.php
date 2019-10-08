@@ -161,10 +161,6 @@ class PHPMailer
     /**
      * Value-array of "method" in Contenttype header "text/calendar"
      *
-     * 
-     * 
-     * 
-     *  
      * @var string[]
      */
     protected static $IcalMethods = [
