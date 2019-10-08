@@ -44,7 +44,7 @@ $mail->Port = 587;
 $mail->Username = "kevinmmti@gmail.com";  
 // Indica el usuario de gmail a traves del cual se enviará el correo
 
-$mail->Password = "thialf1996";
+$mail->Password = "SENHAAQUI";
 // GMAIL password
 
 $mail->SetFrom('kevinmmti@gmail.com', 'First Last'); 
