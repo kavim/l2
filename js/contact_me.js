@@ -21,13 +21,15 @@ $(function() {
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
       $.ajax({
         url: "https://enviadordeemaildokavim.000webhostapp.com/mail.php",
+        contentType: 'application/json',
         type: "POST",
-        data: {
+        dataType: 'json',
+        data: JSON.stringify({
           name: name,
           phone: phone,
           email: email,
           message: message
-        },
+        }),
         cache: false,
         success: function() {
           // Success message
