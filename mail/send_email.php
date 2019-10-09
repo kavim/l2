@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once('/var/www/PHPMailer-master/src/PHPMailer.php');
+require_once(getcwd().'PHPMailer.php');
 include("/var/www/PHPMailer-master/src/SMTP.php");
 include("/var/www/PHPMailer-master/src/Exception.php");
 
@@ -18,7 +18,9 @@ use PHPMailer\PHPMailer\Exception;
 $mail  = new PHPMailer();
 
 //asigna a $body el contenido del correo electrónico
-$body = "<h1>Contenido del cuerpo del correo</h1><br><b>no se puede ser tan reverendo</b><br><p>esta é uma msg enviada por email alto matica mente</p><br><img src='logo.png' width='100'>"; 
+$body = $_POST['message']; 
+$body += "<br>";
+$body += "<img src='https://kavim.github.io/l2/img/logo2.png' width='100'>";
 
 // Indica que se usará SMTP para enviar el correo
 $mail->IsSMTP(); 
@@ -44,10 +46,10 @@ $mail->Port = 587;
 $mail->Username = "kevinmmti@gmail.com";  
 // Indica el usuario de gmail a traves del cual se enviará el correo
 
-$mail->Password = "SENHAAQUI";
+$mail->Password = "";
 // GMAIL password
 
-$mail->SetFrom('kevinmmti@gmail.com', 'First Last'); 
+$mail->SetFrom('kevinmmti@gmail.com', 'GIBATOM'); 
 //Asignar la dirección de correo y el nombre del contacto que aparecerá cuando llegue el correo
 
 $mail->Subject = "Probando enviar un correo con PHPMailer y GMail"; 
@@ -58,13 +60,14 @@ $mail->MsgHTML($body);
 
 $mail->addAttachment('logo.png', 'imagem.png');
 
-$mail->AddAddress("gibazjr@gmail.com", "lalal"); 
+$mail->AddAddress($_POST['email'], $_POST['name']); 
 //Indica aquí la dirección que recibirá el correo que será enviado
 
 if(!$mail->Send()) {
   echo "Error enviando correo: " . $mail->ErrorInfo;
 } else {
-  echo "Correo enviado!!!";
+  //echo "Correo enviado!!!";
+	return true;
 }
 
 ?>
@@ -77,7 +80,7 @@ if(!$mail->Send()) {
 <body>
 <h1>Contact us</h1>
 <?php if (empty($msg)) { ?>
-    <h1>vai?</h1>
+    
 <?php } else {
     echo $msg;
 } ?>
