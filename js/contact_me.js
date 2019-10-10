@@ -20,9 +20,10 @@ $(function() {
       $this = $("#sendMessageButton");
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
       $.ajax({
-        url: "https://enviadordeemaildokavim.000webhostapp.com/mail.php",
+        headers: {"X-My-Custom-Header": "https://enviadordeemaildokavim.000webhostapp.com/index.php"},
+        url: "https://enviadordeemaildokavim.000webhostapp.com/index.php",
         contentType: 'application/json',
-        type: "POST",
+        type: "get",
         dataType: 'json',
         data: JSON.stringify({
           name: name,
