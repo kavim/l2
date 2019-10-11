@@ -22,9 +22,7 @@ $(function() {
       $.ajax({
         headers: {"X-My-Custom-Header": "https://enviadordeemaildokavim.000webhostapp.com/index.php"},
         url: "https://enviadordeemaildokavim.000webhostapp.com/index.php",
-        contentType: 'application/json',
-        type: "get",
-        dataType: 'json',
+        type: "post",
         data: JSON.stringify({
           name: name,
           phone: phone,
