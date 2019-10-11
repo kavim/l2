@@ -8,6 +8,15 @@ $(function() {
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
       // get values from FORM
+
+      var form = $($form);
+      var url = $(form).attr('action')
+
+      var formData = $(form).serialize();
+
+      console.log(formData);
+      console.log(url);
+
       var name = $("input#name").val();
       var email = $("input#email").val();
       var phone = $("input#phone").val();
@@ -19,18 +28,20 @@ $(function() {
       }
       $this = $("#sendMessageButton");
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+      console.log("chego aqui");
       $.ajax({
-        headers: {"X-My-Custom-Header": "https://enviadordeemaildokavim.000webhostapp.com/index.php"},
-        url: "https://enviadordeemaildokavim.000webhostapp.com/index.php",
-        type: "post",
-        data: JSON.stringify({
-          name: name,
-          phone: phone,
-          email: email,
-          message: message
-        }),
+        type: "GET",
+          crossDomain: true,
+          xhrFields: {
+            withCredentials: true
+          },
+          url: url,
+          data: formData, // serializes the form's elements.
         cache: false,
-        success: function() {
+        success: function(data) {
+          console.log("foi");
+          console.log(data);
+
           // Success message
           $('#success').html("<div class='alert alert-success'>");
           $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
@@ -42,7 +53,9 @@ $(function() {
           //clear all fields
           $('#contactForm').trigger("reset");
         },
-        error: function() {
+        error: function(data) {
+          console.log("nao foi");
+          console.log(data);
           // Fail message
           $('#success').html("<div class='alert alert-danger'>");
           $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
